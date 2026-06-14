@@ -33,6 +33,15 @@ test('boots, loads the Ducati model, and selects a part', async ({ page }) => {
   await expect(isolate).toHaveText(/Esci/);
   await isolate.click();
   await expect(isolate).toHaveText(/Isola/);
+
+  // Engine Test (flagship): enter the 5th mode and start the procedural V4.
+  await page.getByTestId('mode-enginetest').click();
+  const run = page.getByTestId('engine-run');
+  await expect(run).toBeVisible();
+  await run.click();
+  await expect(run).toHaveAttribute('aria-pressed', 'true');
+  await page.getByTestId('rpm-9000').click();
+  await expect(run).toHaveAttribute('aria-pressed', 'true');
 });
 
 test('deep link: view-mode recovery + BOM-mapped catalog card', async ({ page }) => {

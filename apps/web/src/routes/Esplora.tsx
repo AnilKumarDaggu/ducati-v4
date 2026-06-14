@@ -196,18 +196,42 @@ export function Esplora() {
                   'radial-gradient(120% 100% at 50% 38%, transparent 52%, rgba(16,16,20,0.12) 100%)',
               }}
             />
-            {!selectedId && (
+            {!selectedId && view.mode !== 'enginetest' && (
               <div className="pointer-events-none absolute left-6 top-5 select-none">
                 <p className="display-caps text-[11px] tracking-[0.22em] text-rosso">Ducati</p>
                 <p className="display text-2xl leading-tight text-nero">Panigale V4</p>
                 <p className="text-xs text-grigio-500">Explore the machine</p>
               </div>
             )}
+            {view.mode === 'enginetest' && (
+              <EngineTestPanel
+                running={engineRunning}
+                rpm={engineRpm}
+                state={engineState}
+                onToggleRun={() => {
+                  const next = !engineRunning;
+                  setEngineRunning(next);
+                  viewerRef.current?.setEngineRunning(next);
+                }}
+                onRpm={(r) => {
+                  setEngineRpm(r);
+                  viewerRef.current?.setEngineRpm(r);
+                  if (!engineRunning) {
+                    setEngineRunning(true);
+                    viewerRef.current?.setEngineRunning(true);
+                  }
+                }}
+              />
+            )}
             {showPerf && <PerfHud stats={perf} />}
             <ModeDock
               showEngineControls={false}
               onChange={(mode) => {
                 viewerRef.current?.setViewMode(mode);
+                if (mode !== 'enginetest') {
+                  setEngineRunning(false);
+                  setEngineState(null);
+                }
                 bus.emit({ type: 'viewmode:changed', mode, timestamp: new Date().toISOString() });
               }}
               onExplodeScrub={() => {}}

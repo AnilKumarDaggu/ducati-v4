@@ -18,8 +18,8 @@ export const DomainEvent = z.discriminatedUnion('type', [
   }),
   z.object({
     type: z.literal('viewmode:changed'),
-    // World+representation presets per DTEA-ADR-010.
-    mode: z.enum(['studio', 'officina', 'tecnico', 'xray']),
+    // World+representation presets per DTEA-ADR-010 (+ enginetest, the V4 dyno).
+    mode: z.enum(['studio', 'officina', 'tecnico', 'xray', 'enginetest']),
     timestamp: z.string().datetime(),
   }),
   z.object({

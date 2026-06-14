@@ -7,8 +7,8 @@ import { z } from 'zod';
 export const SceneBookmark = z.object({
   cameraTarget: z.string().optional(), // componentId to frame
   explode: z.object({ assemblyId: z.string(), level: z.number().min(0).max(1) }).optional(),
-  // World+representation presets per DTEA-ADR-010.
-  viewMode: z.enum(['studio', 'officina', 'tecnico', 'xray']).optional(),
+  // World+representation presets per DTEA-ADR-010 (+ enginetest, the V4 dyno).
+  viewMode: z.enum(['studio', 'officina', 'tecnico', 'xray', 'enginetest']).optional(),
   camAngleDeg: z.number().min(0).max(720).optional(), // CrankAngleClock position
   playClip: z.string().optional(),
 });

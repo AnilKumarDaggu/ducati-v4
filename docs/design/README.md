@@ -7,6 +7,7 @@ Product experience, UX/UI architecture, visual design system, and motion languag
 | ID | Title | Version | Status |
 |---|---|---|---|
 | [DTEA-UXD-001](DTEA-UXD-001-experience-specification-v1.0.md) | Product Experience Specification — "OFFICINA" (gap analysis, UX vision, UI architecture, camera/interaction spec, visual system, motion guidelines, per-module experience direction) | 1.0 | Approved |
+| [DTEA-UXD-005](DTEA-UXD-005-engine-test-and-drilldown.md) | Engine Test & Engineering Drill-Down (real-vs-simulated ledger, Engine Test architecture, drill-down plan) | 1.0 | Engine Test implemented; drill-down architected |
 
 ## Scope
 
