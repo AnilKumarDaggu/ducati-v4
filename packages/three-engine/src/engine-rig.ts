@@ -1,12 +1,70 @@
 import {
   BoxGeometry,
+  CatmullRomCurve3,
   CylinderGeometry,
   Group,
   Mesh,
   MeshPhysicalMaterial,
   MeshStandardMaterial,
+  SphereGeometry,
   Vector3,
 } from 'three';
+
+export type FlowKind = 'air' | 'fuel' | 'oil';
+
+/**
+ * FlowStream — a toggleable educational flow visualization (air/fuel/oil).
+ * Colour-coded particles advancing along a representative path. Honest: these
+ * are illustrative routes, not CFD; off by default.
+ */
+class FlowStream {
+  readonly group = new Group();
+  private readonly curve: CatmullRomCurve3;
+  private readonly particles: Mesh[] = [];
+  private readonly phases: number[] = [];
+  private readonly geo: SphereGeometry;
+  private readonly mat: MeshStandardMaterial;
+
+  constructor(points: Vector3[], color: number, count: number, private readonly speed: number, closed: boolean) {
+    this.curve = new CatmullRomCurve3(points, closed);
+    this.geo = new SphereGeometry(3.4, 10, 10);
+    this.mat = new MeshStandardMaterial({
+      color,
+      emissive: color,
+      emissiveIntensity: 1.6,
+      metalness: 0,
+      roughness: 0.4,
+      transparent: true,
+      opacity: 0.9,
+    });
+    for (let i = 0; i < count; i++) {
+      const m = new Mesh(this.geo, this.mat);
+      this.particles.push(m);
+      this.phases.push(i / count);
+      this.group.add(m);
+    }
+    this.group.visible = false;
+  }
+
+  setEnabled(on: boolean): void {
+    this.group.visible = on;
+  }
+
+  update(dtMs: number): void {
+    if (!this.group.visible) return;
+    const tmp = new Vector3();
+    for (let i = 0; i < this.particles.length; i++) {
+      this.phases[i] = (this.phases[i]! + (this.speed * dtMs) / 1000) % 1;
+      this.curve.getPointAt(this.phases[i]!, tmp);
+      this.particles[i]!.position.copy(tmp);
+    }
+  }
+
+  dispose(): void {
+    this.geo.dispose();
+    this.mat.dispose();
+  }
+}
 
 /**
  * EngineRig — procedural, kinematically-correct V4 cutaway (Engine Test mode).
@@ -74,9 +132,13 @@ export class EngineRig {
   private readonly crank = new Group();
   private readonly cyls: CylRuntime[] = [];
   private readonly disposables: Array<{ dispose(): void }> = [];
+  private readonly cutawayMeshes: Mesh[] = []; // bores + crankcase ghost
+  private readonly flows = new Map<FlowKind, FlowStream>();
+  private combustion = true;
 
   constructor() {
     this.build();
+    this.buildFlows();
     this.group.visible = false;
   }
 

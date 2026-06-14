@@ -27,7 +27,7 @@ Thumbs.db
 # Pipeline-generated assets (rebuild via `pnpm assets:engine`)
 apps/web/public/assets/
 # Large binary 3D models (placed manually; provenance/licensing tracked separately)
-apps/web/public/models/
+# apps/web/public/models/
 public/models/
 # Throwaway visual captures
 apps/web/*.png
