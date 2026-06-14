@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router';
 import {
   createEsploraViewer,
+  type EngineState,
   type EsploraHandle,
   type PerfStats,
   type ViewMode,
@@ -18,6 +19,7 @@ import { ModeDock } from '../components/ModeDock';
 import { PerfHud } from '../components/PerfHud';
 import { StatBand } from '../components/StatBand';
 import { LoadingOverlay } from '../components/LoadingOverlay';
+import { EngineTestPanel } from '../components/EngineTestPanel';
 
 type AssetStatus = 'loading' | 'loaded' | 'error';
 
@@ -39,6 +41,9 @@ export function Esplora() {
   const [navOpen, setNavOpen] = useState(false);
   const [perf, setPerf] = useState<PerfStats | null>(null);
   const [isolated, setIsolated] = useState(false);
+  const [engineState, setEngineState] = useState<EngineState | null>(null);
+  const [engineRunning, setEngineRunning] = useState(false);
+  const [engineRpm, setEngineRpm] = useState(1200);
   const showPerf =
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('perf');
 
@@ -90,6 +95,7 @@ export function Esplora() {
       },
       onHover: (id) => setHovered(id),
       onIsolate: (on) => setIsolated(on),
+      onEngineState: (s) => setEngineState(s),
     }).then((h) => {
       if (disposed) h.dispose();
       else {
