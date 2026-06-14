@@ -1,0 +1,20 @@
+{
+  "explodeId": "explode_engine",
+  "assemblyId": "ENG_GRANTURISMO",
+  "epicenter": { "x": 0, "y": 200, "z": 0 },
+  "components": [
+    { "nodeName": "ENG_S01_OIL-SUMP", "explodeOffset": { "x": 0, "y": -180, "z": 0 }, "duration": 1.0, "delay": 0, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_INTAKE-PLENUM", "explodeOffset": { "x": 0, "y": 280, "z": 0 }, "duration": 1.0, "delay": 0.1, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_CAM-COVER-FRONT", "explodeOffset": { "x": 0, "y": 230, "z": 230 }, "duration": 1.0, "delay": 0.2, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_CAM-COVER-REAR", "explodeOffset": { "x": 0, "y": 230, "z": -230 }, "duration": 1.0, "delay": 0.2, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_CYLINDER-HEAD-FRONT", "explodeOffset": { "x": 0, "y": 110, "z": 150 }, "duration": 1.0, "delay": 0.35, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_CYLINDER-HEAD-REAR", "explodeOffset": { "x": 0, "y": 110, "z": -150 }, "duration": 1.0, "delay": 0.35, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_FRONT-COVER", "explodeOffset": { "x": -180, "y": 0, "z": 0 }, "duration": 1.0, "delay": 0.45, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_CRANK-PULLEY", "explodeOffset": { "x": -340, "y": 0, "z": 0 }, "duration": 1.0, "delay": 0.55, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_CLUTCH-COVER", "explodeOffset": { "x": 240, "y": 0, "z": 0 }, "duration": 1.0, "delay": 0.45, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_EXHAUST-HEADER-1", "explodeOffset": { "x": -40, "y": -30, "z": 280 }, "duration": 1.0, "delay": 0.6, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_EXHAUST-HEADER-2", "explodeOffset": { "x": -15, "y": -30, "z": 300 }, "duration": 1.0, "delay": 0.65, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_EXHAUST-HEADER-3", "explodeOffset": { "x": 15, "y": -30, "z": 300 }, "duration": 1.0, "delay": 0.7, "ease": "power2.inOut" },
+    { "nodeName": "ENG_S01_EXHAUST-HEADER-4", "explodeOffset": { "x": 40, "y": -30, "z": 280 }, "duration": 1.0, "delay": 0.75, "ease": "power2.inOut" }
+  ]
+}

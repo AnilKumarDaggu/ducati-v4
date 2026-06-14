@@ -1,0 +1,31 @@
+{
+  "name": "dtea",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Ducati Multistrada V4 Digital Twin Engineering Academy — Valve Slice (DTEA-RDM-002/003)",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "e2e": "turbo run e2e",
+    "assets:standin": "pnpm --filter @dtea/asset-pipeline standin",
+    "assets:engine": "pnpm --filter @dtea/asset-pipeline run engine",
+    "format": "prettier --write \"**/*.{ts,tsx,json,md,css}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,md,css}\""
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "eslint": "^9.20.0",
+    "prettier": "^3.4.0",
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.24.0"
+  }
+}

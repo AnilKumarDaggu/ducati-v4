@@ -1,0 +1,42 @@
+{
+  "name": "@dtea/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DTEA Valve Slice web app",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 5173",
+    "lint": "eslint src",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "@dtea/data": "workspace:*",
+    "@dtea/events": "workspace:*",
+    "@dtea/sim-core": "workspace:*",
+    "@dtea/three-engine": "workspace:*",
+    "@dtea/ui": "workspace:*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.1.0",
+    "three": "^0.171.0",
+    "zustand": "^5.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@testing-library/jest-dom": "^6.6.0",
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.171.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "jsdom": "^25.0.0",
+    "tailwindcss": "^4.0.0",
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
+  }
+}

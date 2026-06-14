@@ -1,0 +1,14 @@
+{
+  "explodeId": "explode_standin",
+  "assemblyId": "ENG_STANDIN",
+  "epicenter": { "x": 0, "y": 0, "z": 0 },
+  "components": [
+    {
+      "nodeName": "ENG_STANDIN_TEST-BOLT-M8",
+      "explodeOffset": { "x": 0, "y": 55, "z": 0 },
+      "duration": 1.0,
+      "delay": 0,
+      "ease": "power2.inOut"
+    }
+  ]
+}

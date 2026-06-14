@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+.turbo/
+*.tsbuildinfo
+
+# Environment — secrets never enter the repo (ARCH-002 §1)
+.env
+.env.local
+.env.*.local
+
+# Test artifacts
+coverage/
+playwright-report/
+test-results/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+
+# Asset working files (Blender masters live in asset storage, not git — AST-001 pipeline)
+*.blend
+*.blend1
+
+# Pipeline-generated assets (rebuild via `pnpm assets:engine`)
+apps/web/public/assets/
+# Large binary 3D models (placed manually; provenance/licensing tracked separately)
+apps/web/public/models/
+public/models/
+# Throwaway visual captures
+apps/web/*.png
+
+# Local data
+*.log

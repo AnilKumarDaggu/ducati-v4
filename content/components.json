@@ -1,0 +1,131 @@
+[
+  {
+    "componentId": "ENG_STANDIN_TEST-BOLT-M8",
+    "displayName": "Stand-in Test Bolt M8",
+    "hierarchyPath": "S13/01",
+    "adl": "ADL1",
+    "material": {
+      "base": "SYNTHETIC TEST ARTICLE — procedurally generated, not a Ducati part"
+    },
+    "descriptionShort": "Sprint-1 pipeline acceptance article (RDM-003 S1 task 6). Proves lint → inject → optimize → manifest → render → select before scan assets arrive. Removed when the first real part lands.",
+    "relatedComponents": [],
+    "moduleLinks": [],
+    "specRefs": [],
+    "interactable": true
+  },
+  {
+    "componentId": "ENG_VALVETRAIN_INTAKE-VALVE-1",
+    "displayName": "Intake Valve #1",
+    "hierarchyPath": "S01/03/01",
+    "adl": "ADL4",
+    "material": {
+      "base": "Stainless steel (grade ⚠ VERIFY against parts catalog)",
+      "citation": { "document": "PENDING — head teardown measurement + parts catalog" }
+    },
+    "descriptionShort": "Admits the intake charge and seals the combustion chamber against its seat. Spring-actuated — the Granturismo deliberately abandoned desmodromic actuation here (see lesson C2).",
+    "relatedComponents": ["ENG_VALVETRAIN_VALVE-SPRING-1", "ENG_VALVETRAIN_COLLET-SET-1"],
+    "moduleLinks": ["C2"],
+    "specRefs": ["SPEC_SEAT_BAND_WIDTH"],
+    "interactable": true
+  },
+  {
+    "componentId": "ENG_VALVETRAIN_VALVE-SPRING-1",
+    "displayName": "Valve Spring #1",
+    "hierarchyPath": "S01/03/01",
+    "adl": "ADL4",
+    "material": {
+      "base": "Cr-Si spring steel (configuration single/dual ⚠ VERIFY on teardown)",
+      "citation": { "document": "PENDING — head teardown (resolves docs/data tracker item)" }
+    },
+    "descriptionShort": "Closes the valve and prevents float to the rev ceiling — the part that made the 60,000 km valve-check interval possible.",
+    "relatedComponents": ["ENG_VALVETRAIN_INTAKE-VALVE-1", "ENG_VALVETRAIN_SPRING-RETAINER-1"],
+    "moduleLinks": ["C2", "M1"],
+    "specRefs": ["SPEC_SPRING_FREE_LENGTH"],
+    "interactable": true
+  },
+  {
+    "componentId": "ENG_VALVETRAIN_COLLET-SET-1",
+    "displayName": "Valve Collets (pair) #1",
+    "hierarchyPath": "S01/03/01",
+    "adl": "ADL4",
+    "material": {
+      "base": "Case-hardened steel ⚠ VERIFY",
+      "citation": { "document": "PENDING — head teardown measurement" }
+    },
+    "descriptionShort": "Wedge-lock the spring retainer to the valve stem groove — the reason valves don't fall into the engine. Mis-seating a collet is the slice's seeded classic error.",
+    "relatedComponents": ["ENG_VALVETRAIN_SPRING-RETAINER-1", "ENG_VALVETRAIN_INTAKE-VALVE-1"],
+    "moduleLinks": ["C2"],
+    "specRefs": [],
+    "interactable": true
+  },
+
+  { "componentId": "ENG_S01_CRANKCASE", "displayName": "Crankcase", "hierarchyPath": "S01/01/01", "adl": "ADL2",
+    "material": { "base": "Cast aluminium (representative geometry — awaiting scan)" },
+    "descriptionShort": "The structural heart of the V4 Granturismo — houses the crankshaft and forms the engine's stressed-member backbone in the Multistrada's monocoque chassis.",
+    "relatedComponents": ["ENG_S01_OIL-SUMP", "ENG_S01_CYLINDER-HEAD-FRONT"], "moduleLinks": ["C1"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_OIL-SUMP", "displayName": "Oil Sump", "hierarchyPath": "S01/01/04", "adl": "ADL2",
+    "material": { "base": "Cast aluminium (representative geometry — awaiting scan)" },
+    "descriptionShort": "Collects and holds engine oil beneath the crankcase. Sump architecture (wet vs. semi-dry) is ⚠ pending workshop-manual verification.",
+    "relatedComponents": ["ENG_S01_CRANKCASE"], "moduleLinks": ["C7"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_FRONT-COVER", "displayName": "Front Timing Cover", "hierarchyPath": "S01/01/05", "adl": "ADL2",
+    "material": { "base": "Cast aluminium (representative geometry — awaiting scan)" },
+    "descriptionShort": "Encloses the front of the engine and the cam-chain drive (representative geometry).",
+    "relatedComponents": ["ENG_S01_CRANK-PULLEY"], "moduleLinks": [], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_CYLINDER-HEAD-FRONT", "displayName": "Front Cylinder Head", "hierarchyPath": "S01/03/01", "adl": "ADL2",
+    "material": { "base": "Cast aluminium (representative geometry — awaiting scan)" },
+    "descriptionShort": "Front bank head — houses the spring-actuated valvetrain. The Granturismo dropped desmodromics here for a 60,000 km valve interval (see lesson C2).",
+    "relatedComponents": ["ENG_S01_CAM-COVER-FRONT", "ENG_VALVETRAIN_INTAKE-VALVE-1"], "moduleLinks": ["C2"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_CYLINDER-HEAD-REAR", "displayName": "Rear Cylinder Head", "hierarchyPath": "S01/03/02", "adl": "ADL2",
+    "material": { "base": "Cast aluminium (representative geometry — awaiting scan)" },
+    "descriptionShort": "Rear bank head. The rear cylinders deactivate at standstill to cut heat to the rider — a defining Multistrada V4 feature.",
+    "relatedComponents": ["ENG_S01_CAM-COVER-REAR"], "moduleLinks": ["C2", "C4"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_CAM-COVER-FRONT", "displayName": "Front Cam Cover", "hierarchyPath": "S01/03/04", "adl": "ADL2",
+    "material": { "base": "Painted magnesium alloy, Rosso (representative geometry — awaiting scan)" },
+    "descriptionShort": "Seals the front camshaft assembly. The red cam covers are a Ducati signature.",
+    "relatedComponents": ["ENG_S01_CYLINDER-HEAD-FRONT"], "moduleLinks": ["C2"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_CAM-COVER-REAR", "displayName": "Rear Cam Cover", "hierarchyPath": "S01/03/04", "adl": "ADL2",
+    "material": { "base": "Painted magnesium alloy, Rosso (representative geometry — awaiting scan)" },
+    "descriptionShort": "Seals the rear camshaft assembly.",
+    "relatedComponents": ["ENG_S01_CYLINDER-HEAD-REAR"], "moduleLinks": ["C2"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_INTAKE-PLENUM", "displayName": "Intake Plenum", "hierarchyPath": "S07/03", "adl": "ADL2",
+    "material": { "base": "Moulded composite / aluminium (representative geometry — awaiting scan)" },
+    "descriptionShort": "Airbox seated in the 90° vee, feeding both cylinder banks.",
+    "relatedComponents": ["ENG_S01_CYLINDER-HEAD-FRONT", "ENG_S01_CYLINDER-HEAD-REAR"], "moduleLinks": ["C11"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_CRANK-PULLEY", "displayName": "Crankshaft Pulley", "hierarchyPath": "S01/02/01", "adl": "ADL2",
+    "material": { "base": "Steel (representative geometry — awaiting scan)" },
+    "descriptionShort": "Front crankshaft drive. The Granturismo crank counter-rotates — a MotoGP-derived choice that sharpens agility (see C1/J4).",
+    "relatedComponents": ["ENG_S01_FRONT-COVER"], "moduleLinks": ["C1"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_CLUTCH-COVER", "displayName": "Clutch Cover", "hierarchyPath": "S01/06/01", "adl": "ADL2",
+    "material": { "base": "Cast aluminium (representative geometry — awaiting scan)" },
+    "descriptionShort": "Encloses the wet multiplate slipper clutch on the engine's side.",
+    "relatedComponents": ["ENG_S01_CRANKCASE"], "moduleLinks": ["C10"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_EXHAUST-HEADER-1", "displayName": "Exhaust Header 1", "hierarchyPath": "S08/01", "adl": "ADL2",
+    "material": { "base": "Stainless steel (representative geometry — awaiting scan)" },
+    "descriptionShort": "Front-bank exhaust primary. The Twin Pulse firing order gives the V4 its distinctive exhaust note.",
+    "relatedComponents": ["ENG_S01_CYLINDER-HEAD-FRONT"], "moduleLinks": ["C11"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_EXHAUST-HEADER-2", "displayName": "Exhaust Header 2", "hierarchyPath": "S08/01", "adl": "ADL2",
+    "material": { "base": "Stainless steel (representative geometry — awaiting scan)" },
+    "descriptionShort": "Front-bank exhaust primary (representative geometry).",
+    "relatedComponents": ["ENG_S01_CYLINDER-HEAD-FRONT"], "moduleLinks": ["C11"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_EXHAUST-HEADER-3", "displayName": "Exhaust Header 3", "hierarchyPath": "S08/01", "adl": "ADL2",
+    "material": { "base": "Stainless steel (representative geometry — awaiting scan)" },
+    "descriptionShort": "Front-bank exhaust primary (representative geometry).",
+    "relatedComponents": ["ENG_S01_CYLINDER-HEAD-FRONT"], "moduleLinks": ["C11"], "specRefs": [], "interactable": true },
+
+  { "componentId": "ENG_S01_EXHAUST-HEADER-4", "displayName": "Exhaust Header 4", "hierarchyPath": "S08/01", "adl": "ADL2",
+    "material": { "base": "Stainless steel (representative geometry — awaiting scan)" },
+    "descriptionShort": "Front-bank exhaust primary (representative geometry).",
+    "relatedComponents": ["ENG_S01_CYLINDER-HEAD-FRONT"], "moduleLinks": ["C11"], "specRefs": [], "interactable": true }
+]

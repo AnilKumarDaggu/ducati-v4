@@ -1,0 +1,26 @@
+{
+  "name": "@dtea/asset-pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Asset CLI: BOM-naming lint → metadata injection → draco/ktx2 → manifest (ARCH-002 §8, AST-001 global GLB rules)",
+  "type": "module",
+  "scripts": {
+    "standin": "tsx src/cli.ts standin",
+    "engine": "tsx src/cli.ts engine",
+    "lint": "eslint src",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@dtea/data": "workspace:*",
+    "@gltf-transform/core": "^4.1.0",
+    "@gltf-transform/extensions": "^4.1.0",
+    "@gltf-transform/functions": "^4.1.0",
+    "draco3dgltf": "^1.5.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "vitest": "^3.0.0"
+  }
+}

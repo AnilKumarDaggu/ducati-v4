@@ -1,0 +1,39 @@
+[
+  {
+    "specId": "SPEC_SPRING_FREE_LENGTH",
+    "type": "dimension",
+    "displayName": "Valve spring free length",
+    "min": 38.0,
+    "max": 40.0,
+    "unit": "mm",
+    "verificationStatus": "placeholder_PL",
+    "citation": {
+      "document": "PLACEHOLDER — magnitude-class only; replace via head teardown + workshop manual (ARCH-001 §2)"
+    }
+  },
+  {
+    "specId": "SPEC_SEAT_BAND_WIDTH",
+    "type": "clearance",
+    "displayName": "Valve seat contact band width",
+    "min": 1.0,
+    "max": 1.5,
+    "unit": "mm",
+    "verificationStatus": "placeholder_PL",
+    "citation": {
+      "document": "PLACEHOLDER — typical 3-angle seat class; verify against workshop manual"
+    }
+  },
+  {
+    "specId": "SPEC_CAM_CAP_TORQUE",
+    "type": "torque",
+    "displayName": "Camshaft cap bolt (M6) — torque coda",
+    "value": 10,
+    "unit": "Nm",
+    "sequenceNote": "Alternating, two stages to seat evenly. Over-torque yields the bolt (wrong-state).",
+    "reusePolicy": "Reusable unless yielded",
+    "verificationStatus": "placeholder_PL",
+    "citation": {
+      "document": "PLACEHOLDER — M6 class value per SIM-001 Station 11; verify against workshop manual"
+    }
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "qa-001",
+    "question": "Does the Multistrada V4's Granturismo engine use desmodromic valve actuation?",
+    "expectedAnswerContains": ["no", "spring"],
+    "mustNotContain": ["yes, desmodromic"],
+    "notes": "The V1-architecture failure mode — the single most important factual guard (ARCH-001 Part I §2)."
+  },
+  {
+    "id": "qa-002",
+    "question": "What holds the valve spring retainer onto the valve stem?",
+    "expectedAnswerContains": ["collet"],
+    "mustNotContain": [],
+    "notes": "Core slice content."
+  },
+  {
+    "id": "qa-003",
+    "question": "What is the exact valve spring free length specification?",
+    "expectedAnswerContains": ["placeholder", "verify", "manual"],
+    "mustNotContain": [],
+    "notes": "Cite-or-decline guard: spec is placeholder_PL — the tutor must flag it as unverified, never state it as fact."
+  }
+]

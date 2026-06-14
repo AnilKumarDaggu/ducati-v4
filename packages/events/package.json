@@ -1,0 +1,20 @@
+{
+  "name": "@dtea/events",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Typed event bus + localStorage event-log sink (ARCH-002 §2, RDM-002 §8)",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "lint": "eslint src",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@dtea/data": "workspace:*"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.0"
+  }
+}

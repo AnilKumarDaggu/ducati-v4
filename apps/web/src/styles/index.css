@@ -1,0 +1,90 @@
+@import 'tailwindcss';
+
+/*
+ * Tavolozza Officina — UXD-001 §F design tokens.
+ * STUDIO (light) is the default world; rosso is sacred (actions/brand only);
+ * giallo is exclusively truth-discipline caution; verde only for verified/pass.
+ */
+@theme {
+  --color-bianco: #f4f4f2;
+  --color-nero: #101014;
+  --color-rosso: #cc0405;
+  --color-rosso-scuro: #a30304;
+  --color-giallo: #e8a013;
+  --color-verde: #2e9e6b;
+  --color-grigio-50: #fafaf9;
+  --color-grigio-100: #efefed;
+  --color-grigio-200: #e2e2df;
+  --color-grigio-300: #c9c9c5;
+  --color-grigio-400: #a8a8a4;
+  --color-grigio-500: #7d7d79;
+  --color-grigio-600: #5a5a57;
+  --color-grigio-700: #3c3c3a;
+  --color-grigio-800: #232325;
+  --color-grigio-900: #161618;
+
+  --font-display: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  /* Motion timing scale (UXD §G): 120/240/600/1200/1800 ms */
+  --ease-meccanica: cubic-bezier(0.32, 0.08, 0.24, 1);
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: var(--color-bianco);
+  color: var(--color-nero);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Display voice: extended industrial grotesque feel via tracking + weight. */
+.display {
+  font-family: var(--font-display);
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+.display-caps {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Numbers align like an instrument panel (UXD §F). */
+.data {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Panel surface: frosted hairline-bordered cards floating over the stage. */
+.panel {
+  background: color-mix(in srgb, white 78%, transparent);
+  backdrop-filter: saturate(1.1) blur(14px);
+  -webkit-backdrop-filter: saturate(1.1) blur(14px);
+  border-color: color-mix(in srgb, var(--color-grigio-300) 60%, transparent);
+}
+
+/* Premium type details: optical sizing + tighter display tracking. */
+.display,
+.display-caps {
+  font-feature-settings: 'ss01', 'cv01';
+}
+.data {
+  font-feature-settings: 'tnum', 'zero';
+  letter-spacing: -0.01em;
+}
+
+/* UI motion default. */
+.ui-move {
+  transition-timing-function: var(--ease-meccanica);
+  transition-duration: 240ms;
+}

@@ -1,0 +1,66 @@
+# DTEA CI — RDM-003 Sprint 1, budget <10 minutes
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup pnpm via corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install
+        run: pnpm install --frozen-lockfile
+
+      - name: Format check
+        run: pnpm format:check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Unit tests
+        run: pnpm test
+
+      - name: Build stand-in asset (S1 acceptance path)
+        run: pnpm assets:standin
+
+      - name: Build
+        run: pnpm build
+
+  e2e-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: verify
+    steps:
+      - uses: actions/checkout@v4
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build stand-in asset (S1 acceptance path)
+        run: pnpm assets:standin
+      - name: Install Playwright browsers
+        run: pnpm --filter @dtea/web exec playwright install chromium --with-deps
+      - name: Smoke test (WebGL2-forced context)
+        run: pnpm e2e

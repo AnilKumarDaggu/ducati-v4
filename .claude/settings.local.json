@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\Anil.Kumar\\\\.claude\\\\plans\\\\you-are-now-acting-joyful-whistle.md\" \"f:\\\\Anil Important\\\\Claude Code - Projects\\\\Project A- All\\\\Project A\\\\Ducati-DTEA-Architecture-v2.md\")",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\Anil.Kumar\\\\.claude\\\\plans\\\\you-are-now-acting-joyful-whistle.md\" \"f:\\\\Anil Important\\\\Claude Code - Projects\\\\Project A- All\\\\Project A\\\\Ducati-DTEA-BOM-v1.md\")",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\Anil.Kumar\\\\.claude\\\\plans\\\\you-are-now-acting-joyful-whistle.md\" \"f:\\\\Anil Important\\\\Claude Code - Projects\\\\Project A- All\\\\Project A\\\\Ducati-DTEA-LXD-v1.md\")",
+      "PowerShell($root = \"f:\\\\Anil Important\\\\Claude Code - Projects\\\\Project A- All\\\\Project A\"; Get-ChildItem -Recurse \"$root\\\\docs\" -File | ForEach-Object { $_.FullName.Replace\\(\"$root\\\\\", \"\"\\) + \"  \\(\" + $_.Length + \" bytes\\)\" }; \"\"; \"--- Project root: ---\"; Get-ChildItem $root | Select-Object Name)",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\Anil.Kumar\\\\.claude\\\\plans\\\\you-are-now-acting-joyful-whistle.md\" \"f:\\\\Anil Important\\\\Claude Code - Projects\\\\Project A- All\\\\Project A\\\\docs\\\\simulation\\\\DTEA-SIM-001-engine-build-simulator-v1.0.md\")",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\Anil.Kumar\\\\.claude\\\\plans\\\\you-are-now-acting-joyful-whistle.md\" \"f:\\\\Anil Important\\\\Claude Code - Projects\\\\Project A- All\\\\Project A\\\\docs\\\\manufacturing\\\\DTEA-MFG-001-manufacturing-academy-v1.0.md\")",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\Anil.Kumar\\\\.claude\\\\plans\\\\you-are-now-acting-joyful-whistle.md\" \"f:\\\\Anil Important\\\\Claude Code - Projects\\\\Project A- All\\\\Project A\\\\docs\\\\assets\\\\DTEA-AST-001-asset-acquisition-strategy-v1.0.md\")",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\Anil.Kumar\\\\.claude\\\\plans\\\\you-are-now-acting-joyful-whistle.md\" \"f:\\\\Anil Important\\\\Claude Code - Projects\\\\Project A- All\\\\Project A\\\\docs\\\\roadmap\\\\DTEA-RDM-002-vertical-slice-definition-v1.0.md\")",
+      "PowerShell(Copy-Item \"C:\\\\Users\\\\Anil.Kumar\\\\.claude\\\\plans\\\\you-are-now-acting-joyful-whistle.md\" \"f:\\\\Anil Important\\\\Claude Code - Projects\\\\Project A- All\\\\Project A\\\\docs\\\\roadmap\\\\DTEA-RDM-003-valve-slice-sprint-plan-v1.0.md\")",
+      "PowerShell(corepack pnpm@9.15.0 install 2>&1)",
+      "PowerShell(corepack pnpm@9.15.0 typecheck 2>&1)",
+      "PowerShell(pnpm typecheck 2>&1)",
+      "PowerShell(pnpm --filter @dtea/sim-core exec eslint src 2>&1)",
+      "PowerShell(if \\($?\\) { \"clean - no warnings\" })",
+      "PowerShell(pnpm assets:standin 2>&1)",
+      "PowerShell(\"\")",
+      "PowerShell(Remove-Item \"f:\\\\Anil Important\\\\Claude Code - Projects\\\\Project A- All\\\\Project A\\\\packages\\\\three-engine\\\\src\\\\standin-viewer.ts\" -Confirm:$false)",
+      "PowerShell(\"removed\")"
+    ]
+  }
+}
