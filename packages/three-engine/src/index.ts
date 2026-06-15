@@ -13,4 +13,4 @@ export { ViewModeSystem, type ViewMode } from './view-mode-system.js';
 export { ExplodeController } from './explode-controller.js';
 export { CrankAngleClock, type RotationAxis } from './crank-angle-clock.js';
 export { PerfMonitor, type PerfStats } from './perf-monitor.js';
-export { EngineRig, type EngineState, type CylinderState } from './engine-rig.js';
+export { EngineRig, type EngineState, type CylinderState, type FlowKind } from './engine-rig.js';

@@ -32,7 +32,7 @@
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html,
@@ -40,8 +40,8 @@ body,
 #root {
   height: 100%;
   margin: 0;
-  background: var(--color-bianco);
-  color: var(--color-nero);
+  background: #0a0a0c;
+  color: #f4f4f2;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
@@ -65,12 +65,13 @@ body,
   font-variant-numeric: tabular-nums;
 }
 
-/* Panel surface: frosted hairline-bordered cards floating over the stage. */
+/* Panel surface: dark frosted, hairline-bordered cards floating over the stage
+ * (Ducati.com product-page language — near-black chrome, white type, red accent). */
 .panel {
-  background: color-mix(in srgb, white 78%, transparent);
-  backdrop-filter: saturate(1.1) blur(14px);
-  -webkit-backdrop-filter: saturate(1.1) blur(14px);
-  border-color: color-mix(in srgb, var(--color-grigio-300) 60%, transparent);
+  background: color-mix(in srgb, #0b0b0e 82%, transparent);
+  backdrop-filter: saturate(1.15) blur(16px);
+  -webkit-backdrop-filter: saturate(1.15) blur(16px);
+  border-color: color-mix(in srgb, white 12%, transparent);
 }
 
 /* Premium type details: optical sizing + tighter display tracking. */

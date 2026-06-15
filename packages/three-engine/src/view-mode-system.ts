@@ -72,7 +72,9 @@ interface StagePreset {
 }
 
 const STAGE_PRESETS: Record<ViewMode, StagePreset> = {
-  studio: { background: 0xf4f4f2, hemi: 0.55, key: 2.4, keyColor: 0xffffff, fill: 0.7, rim: 1.1, envIntensity: 0.9, shadowOpacity: 0.18 },
+  // Dark premium showroom (Ducati.com product-page language) — graphite cove,
+  // strong rim for edge separation, IBL kept high for crisp reflections.
+  studio: { background: 0x141519, hemi: 0.5, key: 2.6, keyColor: 0xffffff, fill: 0.6, rim: 1.5, envIntensity: 0.95, shadowOpacity: 0.28 },
   officina: { background: 0x101014, hemi: 0.12, key: 3.2, keyColor: 0xffe2c4, fill: 0.15, rim: 0.9, envIntensity: 0.25, shadowOpacity: 0.4 },
   tecnico: { background: 0xeceae4, hemi: 1.0, key: 1.1, keyColor: 0xffffff, fill: 0.7, rim: 0.25, envIntensity: 0.12, shadowOpacity: 0.05 },
   xray: { background: 0x0f1622, hemi: 0.4, key: 1.6, keyColor: 0xbfd4ff, fill: 0.5, rim: 1.4, envIntensity: 0.5, shadowOpacity: 0.0 },

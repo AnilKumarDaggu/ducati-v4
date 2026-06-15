@@ -77,8 +77,8 @@ export function ModeDock({
           }}
           className={`ui-move rounded-full px-3 py-1.5 text-xs transition-colors ${
             crankRunning
-              ? 'bg-nero font-semibold text-white'
-              : 'text-grigio-600 hover:bg-grigio-100 hover:text-nero'
+              ? 'bg-rosso font-semibold text-white'
+              : 'text-grigio-300 hover:bg-white/10 hover:text-white'
           }`}
         >
           {crankRunning ? 'Pausa' : 'Avvia'}
@@ -108,7 +108,7 @@ export function ModeDock({
             setExplodeLevel(target);
             onExplodePlay(target);
           }}
-          className="ui-move rounded-full px-3 py-1.5 text-xs text-grigio-600 transition-colors hover:bg-grigio-100 hover:text-nero"
+          className="ui-move rounded-full px-3 py-1.5 text-xs text-grigio-300 transition-colors hover:bg-white/10 hover:text-white"
         >
           {explodeLevel < 0.5 ? 'Apri' : 'Chiudi'}
         </button>
@@ -131,8 +131,8 @@ export function ModeDock({
               }}
               className={`ui-move rounded-full px-3.5 py-1.5 text-xs transition-colors ${
                 active
-                  ? 'bg-nero font-semibold text-white'
-                  : 'text-grigio-600 hover:bg-grigio-100 hover:text-nero'
+                  ? 'bg-rosso font-semibold text-white'
+                  : 'text-grigio-300 hover:bg-white/10 hover:text-white'
               }`}
             >
               {m.label}

@@ -19,7 +19,8 @@ import { ModeDock } from '../components/ModeDock';
 import { PerfHud } from '../components/PerfHud';
 import { StatBand } from '../components/StatBand';
 import { LoadingOverlay } from '../components/LoadingOverlay';
-import { EngineTestPanel } from '../components/EngineTestPanel';
+import { EngineConsole, type ConsoleToggles } from '../components/EngineConsole';
+import { EngineAudio } from '../lib/engineAudio';
 
 type AssetStatus = 'loading' | 'loaded' | 'error';
 
@@ -44,6 +45,15 @@ export function Esplora() {
   const [engineState, setEngineState] = useState<EngineState | null>(null);
   const [engineRunning, setEngineRunning] = useState(false);
   const [engineRpm, setEngineRpm] = useState(1200);
+  const [toggles, setToggles] = useState<ConsoleToggles>({
+    combustion: true,
+    cutaway: true,
+    air: false,
+    fuel: false,
+    oil: false,
+    sound: false,
+  });
+  const engineAudioRef = useRef<EngineAudio | null>(null);
   const showPerf =
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('perf');
 
@@ -123,6 +133,8 @@ export function Esplora() {
       disposed = true;
       viewerRef.current?.dispose();
       viewerRef.current = null;
+      engineAudioRef.current?.dispose();
+      engineAudioRef.current = null;
     };
   }, []);
 
@@ -199,29 +211,9 @@ export function Esplora() {
             {!selectedId && view.mode !== 'enginetest' && (
               <div className="pointer-events-none absolute left-6 top-5 select-none">
                 <p className="display-caps text-[11px] tracking-[0.22em] text-rosso">Ducati</p>
-                <p className="display text-2xl leading-tight text-nero">Panigale V4</p>
-                <p className="text-xs text-grigio-500">Explore the machine</p>
+                <p className="display text-3xl leading-tight text-white">Panigale V4</p>
+                <p className="text-xs tracking-wide text-grigio-400">Explore the machine</p>
               </div>
-            )}
-            {view.mode === 'enginetest' && (
-              <EngineTestPanel
-                running={engineRunning}
-                rpm={engineRpm}
-                state={engineState}
-                onToggleRun={() => {
-                  const next = !engineRunning;
-                  setEngineRunning(next);
-                  viewerRef.current?.setEngineRunning(next);
-                }}
-                onRpm={(r) => {
-                  setEngineRpm(r);
-                  viewerRef.current?.setEngineRpm(r);
-                  if (!engineRunning) {
-                    setEngineRunning(true);
-                    viewerRef.current?.setEngineRunning(true);
-                  }
-                }}
-              />
             )}
             {showPerf && <PerfHud stats={perf} />}
             <ModeDock
@@ -231,6 +223,8 @@ export function Esplora() {
                 if (mode !== 'enginetest') {
                   setEngineRunning(false);
                   setEngineState(null);
+                  engineAudioRef.current?.setEnabled(false);
+                  setToggles((t) => ({ ...t, sound: false }));
                 }
                 bus.emit({ type: 'viewmode:changed', mode, timestamp: new Date().toISOString() });
               }}
@@ -251,12 +245,52 @@ export function Esplora() {
           <StatBand />
         </main>
 
-        <SchedaTecnica
-          onFrame={(id) => viewerRef.current?.frameComponent(id)}
-          onSelect={selectFromUi}
-          isolated={isolated}
-          onToggleIsolate={() => viewerRef.current?.setIsolated(!isolated)}
-        />
+        {view.mode === 'enginetest' ? (
+          <EngineConsole
+            running={engineRunning}
+            rpm={engineRpm}
+            state={engineState}
+            toggles={toggles}
+            onToggleRun={() => {
+              const next = !engineRunning;
+              setEngineRunning(next);
+              viewerRef.current?.setEngineRunning(next);
+              engineAudioRef.current?.setRunning(next);
+            }}
+            onRpm={(r) => {
+              setEngineRpm(r);
+              viewerRef.current?.setEngineRpm(r);
+              engineAudioRef.current?.setRpm(r);
+              if (!engineRunning) {
+                setEngineRunning(true);
+                viewerRef.current?.setEngineRunning(true);
+                engineAudioRef.current?.setRunning(true);
+              }
+            }}
+            onToggle={(key, value) => {
+              setToggles((t) => ({ ...t, [key]: value }));
+              if (key === 'sound') {
+                const a = (engineAudioRef.current ??= new EngineAudio());
+                a.setRunning(engineRunning);
+                a.setRpm(engineRpm);
+                a.setEnabled(value);
+                return;
+              }
+              const v = viewerRef.current;
+              if (!v) return;
+              if (key === 'combustion') v.setEngineCombustion(value);
+              else if (key === 'cutaway') v.setEngineCutaway(value);
+              else v.setEngineFlow(key, value);
+            }}
+          />
+        ) : (
+          <SchedaTecnica
+            onFrame={(id) => viewerRef.current?.frameComponent(id)}
+            onSelect={selectFromUi}
+            isolated={isolated}
+            onToggleIsolate={() => viewerRef.current?.setIsolated(!isolated)}
+          />
+        )}
       </div>
     </div>
   );

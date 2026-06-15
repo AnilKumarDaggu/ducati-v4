@@ -11,7 +11,9 @@ test('boots, loads the Ducati model, and selects a part', async ({ page }) => {
 
   // The real 17 MB GLB streams in, then the navigator populates from its parts.
   await expect(page.getByTestId('asset-status')).toHaveText('asset: loaded', { timeout: 30_000 });
-  const firstPart = page.locator('aside[aria-label="Component navigator"] button').first();
+  // The navigator buckets parts into material groups; the first group is open by
+  // default, so a part button is reachable inside its list.
+  const firstPart = page.locator('aside[aria-label="Component navigator"] ul button').first();
   await expect(firstPart).toBeVisible({ timeout: 10_000 });
 
   // Selecting a native part populates the card and drives the URL.

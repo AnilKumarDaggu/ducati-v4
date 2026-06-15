@@ -50,8 +50,8 @@ export function SchedaTecnica({ onFrame, onSelect, isolated, onToggleIsolate }: 
               onClick={onToggleIsolate}
               className={`ui-move mt-3 w-full rounded border px-3.5 py-2 text-xs font-medium transition-colors ${
                 isolated
-                  ? 'border-rosso bg-rosso/8 text-rosso'
-                  : 'border-grigio-300 text-grigio-700 hover:border-nero hover:text-nero'
+                  ? 'border-rosso bg-rosso/15 text-rosso'
+                  : 'border-white/20 text-grigio-300 hover:border-white hover:text-white'
               }`}
             >
               {isolated ? 'Esci dall’isolamento' : 'Isola componente'}
@@ -74,8 +74,8 @@ function NativeCard({
 }) {
   return (
     <div data-testid="info-panel" className="space-y-5">
-      <h2 className="display text-2xl leading-tight text-nero">{label}</h2>
-      <p className="text-sm leading-relaxed text-grigio-600">
+      <h2 className="display text-2xl leading-tight text-white">{label}</h2>
+      <p className="text-sm leading-relaxed text-grigio-300">
         A part of the Ducati Panigale V4 model. Engineering metadata —
         function, material, manufacturing, specifications — is added as parts are
         mapped to the BOM. For now this is a native model component.
@@ -93,7 +93,7 @@ function NativeCard({
       </div>
       <p
         data-testid="selected-component"
-        className="data border-t border-grigio-100 pt-3 text-[10px] text-grigio-400"
+        className="data border-t border-white/10 pt-3 text-[10px] text-grigio-500"
       >
         {id}
       </p>
@@ -113,17 +113,17 @@ function CatalogCard({
   return (
     <div data-testid="info-panel" className="space-y-5">
       <div>
-        <h2 className="display text-2xl leading-tight text-nero">{record.displayName}</h2>
+        <h2 className="display text-2xl leading-tight text-white">{record.displayName}</h2>
         <div className="mt-2 flex flex-wrap gap-1.5">
-          <span className="data rounded-sm bg-grigio-100 px-1.5 py-0.5 text-[10px] text-grigio-600">
+          <span className="data rounded-sm bg-white/[0.06] px-1.5 py-0.5 text-[10px] text-grigio-300">
             {record.adl}
           </span>
-          <span className="data rounded-sm bg-grigio-100 px-1.5 py-0.5 text-[10px] text-grigio-600">
+          <span className="data rounded-sm bg-white/[0.06] px-1.5 py-0.5 text-[10px] text-grigio-300">
             {record.hierarchyPath}
           </span>
         </div>
       </div>
-      <p className="text-sm leading-relaxed text-grigio-700">{record.descriptionShort}</p>
+      <p className="text-sm leading-relaxed text-grigio-300">{record.descriptionShort}</p>
       {record.specRefs.length > 0 && (
         <div>
           <h3 className="display-caps mb-1.5 text-[9px] tracking-[0.18em] text-grigio-400">
@@ -139,9 +139,9 @@ function CatalogCard({
                   : `${spec.min}–${spec.max} ${spec.unit}`;
               return (
                 <li key={ref} className="flex items-baseline justify-between gap-2 text-sm">
-                  <span className="text-grigio-600">{spec.displayName}</span>
+                  <span className="text-grigio-400">{spec.displayName}</span>
                   <span className="flex shrink-0 items-center gap-1.5">
-                    <span className="data text-nero">{value}</span>
+                    <span className="data text-white">{value}</span>
                     <VerificationBadge status={spec.verificationStatus} />
                   </span>
                 </li>
@@ -156,7 +156,7 @@ function CatalogCard({
             <button
               key={rid}
               onClick={() => onSelect(rid)}
-              className="ui-move rounded-full border border-grigio-300 px-2.5 py-1 text-[11px] text-grigio-700 transition-colors hover:border-rosso hover:text-rosso"
+              className="ui-move rounded-full border border-white/15 px-2.5 py-1 text-[11px] text-grigio-300 transition-colors hover:border-rosso hover:text-rosso"
             >
               {componentById.get(rid)?.displayName ?? rid}
             </button>
@@ -173,7 +173,7 @@ function CatalogCard({
       </div>
       <p
         data-testid="selected-component"
-        className="data border-t border-grigio-100 pt-3 text-[10px] text-grigio-400"
+        className="data border-t border-white/10 pt-3 text-[10px] text-grigio-500"
       >
         {record.componentId}
       </p>

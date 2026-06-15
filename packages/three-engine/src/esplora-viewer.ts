@@ -32,7 +32,7 @@ import { CrankAngleClock, type RotationAxis } from './crank-angle-clock.js';
 import { PerfMonitor, type PerfStats } from './perf-monitor.js';
 import { makeStudioEnvironment } from './studio-environment.js';
 import { upgradeToPhysical } from './materials.js';
-import { EngineRig, type EngineState } from './engine-rig.js';
+import { EngineRig, type EngineState, type FlowKind } from './engine-rig.js';
 
 /**
  * EsploraViewer — the cinematic staged viewer (UXD-001 §H, V1 visual pass).
@@ -146,6 +146,10 @@ export interface EsploraHandle {
   setEngineRunning(running: boolean): void;
   /** Engine Test: target rpm (animation scales by rpm). */
   setEngineRpm(rpm: number): void;
+  /** Engine Test visual toggles. */
+  setEngineCombustion(on: boolean): void;
+  setEngineCutaway(on: boolean): void;
+  setEngineFlow(kind: FlowKind, on: boolean): void;
   dispose(): void;
 }
 
@@ -589,7 +593,7 @@ export async function createEsploraViewer(
     explode?.update(now);
     crank.update(delta);
     if (engineTestActive) {
-      engineRig.update(crank.getAngle());
+      engineRig.update(crank.getAngle(), delta, engineRpm, engineRunning);
       if (options.onEngineState && now - lastEngineEmit > 160) {
         lastEngineEmit = now;
         options.onEngineState(engineRig.state(crank.getAngle(), engineRpm, engineRunning));
@@ -641,6 +645,15 @@ export async function createEsploraViewer(
     setEngineRpm(rpm) {
       engineRpm = rpm;
       if (engineRunning) crank.setRunning(true, rpm);
+    },
+    setEngineCombustion(on) {
+      engineRig.setCombustion(on);
+    },
+    setEngineCutaway(on) {
+      engineRig.setCutaway(on);
+    },
+    setEngineFlow(kind, on) {
+      engineRig.setFlow(kind, on);
     },
     setExplodeLevel(level) {
       explode?.setLevel(level);
